@@ -1,3 +1,29 @@
+// Highlights the current section's name in the navbar when scrolled or clicked
+const sections = document.querySelectorAll('section[id], footer[id]');
+const navLinks = document.querySelectorAll('.nav-links ul li a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120; // offset for navbar
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+    if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');  // adds active to current section link
+    }
+  });
+});
+
+
+// counter up animation for hero section
 function countUp(element, target, duration = 2000) {
   let start = 0;
   const step = target / (duration / 60); // speed control
@@ -5,14 +31,16 @@ function countUp(element, target, duration = 2000) {
   const timer = setInterval(() => {
     start += step;
     if (start >= target) {
-      element.textContent = target + '+';
+      element.textContent = target + "+";
       clearInterval(timer);
     } else {
-      element.textContent = Math.floor(start) + '+';
+      element.textContent = Math.floor(start) + "+";
     }
   }, 16);
 }
 
 // Call it on page load
-countUp(document.querySelector('.experience-number'), 1);
-countUp(document.querySelector('.projects-number'), 5);
+countUp(document.querySelector(".experience-number"), 1);
+countUp(document.querySelector(".projects-number"), 5);
+
+
