@@ -2,14 +2,14 @@
 const sections = document.querySelectorAll('section[id], footer[id]');
 const navLinks = document.querySelectorAll('.nav-links ul li a');
 
-window.addEventListener('scroll', () => {
+function setActiveLink() {
   let current = '';
 
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 300; // offset for navbar
+    const sectionTop = section.offsetTop - 120; // offset for navbar
       const sectionBottom = sectionTop + section.offsetHeight;
 
-    if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+    if (window.scrollY >= sectionTop) {
       current = section.getAttribute('id');
     }
   });
@@ -20,7 +20,10 @@ window.addEventListener('scroll', () => {
       link.classList.add('active');  // adds active to current section link
     }
   });
-});
+}
+
+window.addEventListener('scroll', setActiveLink); //runs on scroll
+setActiveLink(); //runs on page load
 
 
 // counter up animation for hero section
