@@ -478,6 +478,7 @@ hr {
   }
 }
 
+/*mobile version*/
 @media (max-width: 480px) {
   .do-grid {
     grid-template-columns: 1fr;  /* 1 column on mobile */
