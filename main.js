@@ -6,7 +6,7 @@ window.addEventListener('scroll', () => {
   let current = '';
 
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120; // offset for navbar
+    const sectionTop = section.offsetTop - 300; // offset for navbar
       const sectionBottom = sectionTop + section.offsetHeight;
 
     if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
